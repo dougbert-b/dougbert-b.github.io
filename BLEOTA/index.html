@@ -1655,7 +1655,6 @@ function waitForFw(ms = 60000) {
 // Finds the largest writeValueWithoutResponse payload that succeeds.
 // The OTA packet has a 3-byte header, so usable payload = probed_size - 3.
 async function probeMTU(char) {
-  //return 247;
   const candidates = [/*510,*/ 247, 185, 122, 23];
   for (const size of candidates) {
     try {
