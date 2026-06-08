@@ -1417,17 +1417,9 @@ async function connectBLE() {
     // Only declare the DIS *service* UUID in optionalServices.
     // Do NOT list individual DIS characteristic UUIDs here — some (like 0x2a25)
     // are in Chrome's GATT blocklist and will cause requestDevice to throw.
-    //device = await navigator.bluetooth.requestDevice({
-      //filters: [{ services: [OTA_SVC] }],
-     // optionalServices: ['0000180a-0000-1000-8000-00805f9b34fb']
-    //});
-
     device = await navigator.bluetooth.requestDevice({
-      acceptAllDevices: true,
-      optionalServices: [
-        OTA_SVC,
-        '0000180a-0000-1000-8000-00805f9b34fb'
-      ]
+      filters: [{ services: [OTA_SVC] }],
+      optionalServices: ['0000180a-0000-1000-8000-00805f9b34fb']
     });
 
     device.addEventListener('gattserverdisconnected', onDisc);
